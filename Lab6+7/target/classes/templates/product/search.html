@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Search</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container mt-5">
+		<h3>Search Products</h3>
+		<form action="/product/search" method="post" class="mb-4">
+			<div class="row">
+				<div class="col-md-4">
+					<input type="number" name="min" th:value="${param.min}"
+						class="form-control" placeholder="Min Price?">
+				</div>
+				<div class="col-md-4">
+					<input type="number" name="max" th:value="${param.max}"
+						class="form-control" placeholder="Max Price?">
+				</div>
+				<div class="col-md-4">
+					<button type="submit" class="btn btn-primary">Search</button>
+				</div>
+			</div>
+		</form>
+
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="item : ${items}">
+					<tr>
+						<td th:text="${item.id}"></td>
+						<td th:text="${item.name}"></td>
+						<td th:text="${item.price}"></td>
+						<td th:text="${item.createDate}"></td>
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+	</div>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</body>
+</html>

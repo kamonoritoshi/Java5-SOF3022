@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Sorting</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container mt-5">
+		<h3>
+			SORTING BY
+			<th:block th:text="${param.field}"></th:block>
+		</h3>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th><a href="/product/sort?field=id"
+						class="text-decoration-none">Id</a></th>
+					<th><a href="/product/sort?field=name"
+						class="text-decoration-none">Name</a></th>
+					<th><a href="/product/sort?field=price"
+						class="text-decoration-none">Price</a></th>
+					<th><a href="/product/sort?field=createDate"
+						class="text-decoration-none">Date</a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="item: ${items}">
+					<tr>
+						<td th:text="${item.id}"></td>
+						<td th:text="${item.name}"></td>
+						<td th:text="${item.price}"></td>
+						<td th:text="${item.createDate}"></td>
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+	</div>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</body>
+</html>
