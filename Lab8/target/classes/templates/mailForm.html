@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Email Form</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+        <h1>Email Form</h1>
+        <form th:action="@{/send}" th:object="${mail}" method="post">
+            <div class="form-group">
+                <label>From:</label>
+                <input type="text" th:field="*{from}" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>To:</label>
+                <input type="text" th:field="*{to}" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Cc:</label>
+                <input type="text" th:field="*{cc}" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Bcc:</label>
+                <input type="text" th:field="*{bcc}" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Subject:</label>
+                <input type="text" th:field="*{subject}" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Body:</label>
+                <textarea th:field="*{body}" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Attachments (comma-separated paths):</label>
+                <input type="text" th:field="*{filenames}" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button type="submit" name="action" value="direct" class="btn btn-primary">Send Direct</button>
+                <button type="submit" name="action" value="queue" class="btn btn-secondary">Send to Queue</button>
+            </div>
+        </form>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</body>
+</html>
